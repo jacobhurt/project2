@@ -1,0 +1,16 @@
+<%- include("../includes/header.ejs", {title:"Doctors - " + result[0].Doctor_name}); %>
+<h1>Doctors</h1>
+<ul>
+    <li>Doctor Last Name: <%= result[0].Doctor_LName %></li>
+    <li>Doctor (s):
+        <ul>
+            <% for(var i=0; result.length > i; i++ ) { %>
+            <li><%=  result[i].Doctor_LName %></li>
+            <% } %>
+        </ul>
+    </li>
+</ul>
+
+<a href="/Doctor/all"><< back</a>
+
+<%- include("../includes/footer.ejs"); %>

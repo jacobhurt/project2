@@ -1,0 +1,27 @@
+<%- include("../includes/header.ejs", {title:"Add New Patient"}); %>
+<h1>Add New Patient</h1>
+<form action="/patient/insert" method="get">
+    Patient Name: <input id="Patient_name" name="Patient_name" type="text" />
+    <br />
+    <br />
+    Patient
+    <br />
+    <select id="PID" name="PID" multiple="multiple">
+        <% for(var i=0; PID > i; i++ ) { %>
+        <option value="<%= patient[i].PID %>"></option>
+        <% } %>
+    </select>
+
+    <!-- Initialize the multiselect plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#PID').multiselect();
+        });
+    </script>
+
+
+    <br />
+    <input type="submit" />
+
+</form>
+<%- include("../includes/footer.ejs"); %>

@@ -1,0 +1,37 @@
+<%- include("../includes/header.ejs", {title: "Update " + patient.patient_LName}); %>
+
+<h1>Update <%= patient.patient_LName%></h1>
+<form action="/patient/update" method="get">
+    <input type="hidden" id="PID" name="PID" value="<%= Patient.Patient_id %>">
+    Patient Name: <input id="patient_LName" name="patient_LName" type="text" value="<%= patient.patient_LName%>"/>
+    <br />
+    <br />
+    Patient <br />
+    <select id="PID" name="PID" multiple="multiple">
+        <% for(var i=0; PID.length > i; i++ ) {
+            var selected = "";
+
+            if(patient[i].PID != null) {
+                selected = "selected";
+            }
+        %>
+        <option value="<%= patient[i].PID %>" <%= selected %> </option>
+        <% } %>
+    </select>
+
+    <!-- Initialize the multiselect plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#PID').multiselect();
+        });
+    </script>
+
+    <br />
+
+    <input type="submit" />
+
+</form>
+
+<%- include("../includes/footer.ejs"); %>
+
+</html>

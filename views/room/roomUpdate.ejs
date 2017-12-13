@@ -1,0 +1,37 @@
+<%- include("../includes/header.ejs", {title: "Update " + Room.Room_LName}); %>
+
+<h1>Update <%= Room.Room_LName%></h1>
+<form action="/Room/update" method="get">
+    <input type="hidden" id="RoomID" name="RoomID" value="<%= Room.Room_id %>">
+    Room Name: <input id="Room_LName" name="Room_LName" type="text" value="<%= Room.Room_LName%>"/>
+    <br />
+    <br />
+    Room <br />
+    <select id="RoomID" name="RoomID" multiple="multiple">
+        <% for(var i=0; RoomID.length > i; i++ ) {
+            var selected = "";
+
+            if(Room[i].RoomID != null) {
+                selected = "selected";
+            }
+        %>
+        <option value="<%= Room[i].RoomID %>" <%= selected %> </option>
+        <% } %>
+    </select>
+
+    <!-- Initialize the multiselect plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#RoomID').multiselect();
+        });
+    </script>
+
+    <br />
+
+    <input type="submit" />
+
+</form>
+
+<%- include("../includes/footer.ejs"); %>
+
+</html>

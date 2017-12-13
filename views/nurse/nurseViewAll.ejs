@@ -1,0 +1,24 @@
+<%- include("../includes/header.ejs", {title:"Nurse - View All"}); %>
+
+<h1>Nurses</h1>
+<a href="/Nurse/add">Add New Nurse</a> <br />
+
+<br />
+
+<table border="1">
+    <tr><th>Name</th><th>Actions</th></tr>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
+        <td><a href="/Nurse/?NID=<%= result[i].NID %>"><%= result[i].Nurse_LName %></a></td>
+        <td>
+            <button onclick="event.preventDefault();window.location.href='/Nurse/edit/?NID=<%= result[i].NID %>'">Edit</button>
+            <form action="/Nurse/delete/" style="display:inline;">
+                <input type="hidden" name="NID" id="NID" value="<%= result[i].NID %>" />
+                <input type="submit" value="Delete"/>
+            </form>
+
+        </td>
+    </tr>
+    <% } %>
+</table>
+<%- include("../includes/footer.ejs"); %>

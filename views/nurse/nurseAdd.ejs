@@ -1,0 +1,27 @@
+<%- include("../includes/header.ejs", {title:"Add New Nurse"}); %>
+<h1>Add New Nurse</h1>
+<form action="/Nurse/insert" method="get">
+    Nurse Name: <input id="Nurse_name" name="Nurse_name" type="text" />
+    <br />
+    <br />
+    Nurse
+    <br />
+    <select id="NID" name="NID" multiple="multiple">
+        <% for(var i=0; NID > i; i++ ) { %>
+        <option value="<%= Nurse[i].NID %>"></option>
+        <% } %>
+    </select>
+
+    <!-- Initialize the multiselect plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#NID').multiselect();
+        });
+    </script>
+
+
+    <br />
+    <input type="submit" />
+
+</form>
+<%- include("../includes/footer.ejs"); %>
